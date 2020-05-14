@@ -1,0 +1,545 @@
+body{
+	background:#f6f6f6;
+}
+section{
+	width:1200px;
+	margin:0 auto;
+}
+section .box{
+	background:#fff;
+	min-height:60px;
+	margin-top:10px;
+	padding:0 15px;
+	overflow:hidden;
+}
+section .box .p1{
+	line-height:60px;
+	font-size:16px;
+	padding:0 15px;
+	color:#4f4f4f;
+}
+section .box .p2{
+	padding:0 15px;
+	line-height:40px;
+	border-bottom:solid 1px #ededed;
+}
+section .box .p3{
+	font-size:12px;
+	color:red;
+	line-height:30px;
+	margin-left:20px;
+}
+section .info1{
+	border:solid 1px #c4c4c4;
+	margin-top:20px;
+	margin-left:15px;
+	margin-right:15px;
+}
+section .info1 .ul1{
+	background:#e1e1e1;
+	height:30px;
+}
+section .info1 li{
+	float:left;
+}
+section .info1 .ul1 li{
+	width:16.6%;
+	text-align:center;
+	line-height:30px;
+	color:#707070;
+}
+
+section .info1 .ul2{
+	height:98px;
+	border-bottom:solid 1px #c4c4c4;
+}
+section .info1 .ul2 li{
+	text-align:center;
+	line-height:98px;
+	width:16.6%;
+	color:#4f4f4f;
+}
+section .info1 .ul2 .li3_color{
+	color: #ff9c27;
+}
+/*鏄剧ず鎶樻墸淇℃伅*/
+section .info1 .ul2 .li4{
+	
+}
+section .info1 .ul2 .li4>div{
+	display:inline-block;
+	vertical-align:middle;
+	line-height:20px;
+}
+section .info1 .ul2 .li4>div .discount_box{
+	line-height:18px;
+	font-size:12px;
+	width:50px;
+	height:20px;
+	position:relative;
+}
+section .info1 .ul2 .discount_box .p5{
+	width:58px;
+	height:19px;
+	border:solid 1px #ff9c00;
+	color:#ff9c00;
+	cursor:pointer;
+	background:#fff;
+	position:relative;
+	z-index:1;
+}
+section .info1 .ul2 .discount_box .d1{
+	position:absolute;
+	left:0;
+	top:19px;
+	width:250px;
+	padding:5px 0;
+	border:solid 1px #ff9c00;
+	background:#fff;
+	display:none;
+}
+section .info1 .ul2 .discount_box .d1 div{
+	width:230px;
+	height: 30px;
+    line-height: 30px;
+	margin:5px auto;
+	border:dashed 1px #ffdfae;
+	border-radius:5px;
+	background:#fff8ed;
+	text-align:center;
+	font-size:12px;
+	color:#ff5a00;
+}
+section .info1 .ul2 .discount_box:hover .p5{
+	border-bottom:none;
+}
+section .info1 .ul2 .discount_box:hover .d1{
+	display:block;
+}
+section .info1 .ul2 .discount_box .d1 div span{
+	font-weight:bold;
+}
+section .info1 .ul2 .li1 div{
+	display:inline-block;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+	border-radius:50%;
+	vertical-align:middle;
+}
+section .info1 .ul2 .li1 div img{
+	display:block;
+	width:100%;
+	height:auto;
+}
+section .info1 .ul2 .li5 *{
+	display:inline-block;
+}
+section .info1 .ul2 .li5 span{
+	color:red;
+}
+section .info1 .ul2 .li5 p{
+	width: 20px;
+    height: 20px;
+    line-height: 20px;
+	border-radius:50%;
+	border: 1px solid #d9d9d9;
+	cursor:pointer;
+	margin:0 5px;
+}
+section .info1 .ul2 .li5 .inpt{
+	border: none;
+    border-bottom: 1px solid #ddd;
+    width: 50px;
+    text-align: center;
+    height: 22px;
+    line-height: 22px;
+    outline: none;
+}
+section .info1 .ul2 .li6{
+	font-weight:bold;
+	color:#ff9c27;
+}
+section .info1 .ul3{
+	height:118px;
+}
+section .info1 .ul3 li{
+	width:100%;
+	height:118px;
+	position:relative;
+}
+section .info1 .ul3 textarea{
+	width:1100px;
+	height:90px;
+	display:block;
+	margin:0 auto;
+	margin-top:10px;
+	resize:none;
+	outline:none;
+	border:none;
+	background:none;
+}
+section .info1 .ul3 li p{
+	position:absolute;
+	position:absolute;
+	right:20px;
+	bottom:10px;
+	color:#ccc;
+}
+section .txt1{
+	padding:8px 15px;
+	height:28px;
+	line-height:28px;
+	padding-bottom:15px;
+}
+section .txt1 img{
+	width:15px;
+	vertical-align:sub;
+}
+section .txt1 .s1{
+	color:#959595;
+}
+section .txt1 input{
+	height:26px;
+	border:solid 1px #c4c4c4;
+	border-radius:4px;
+	outline:none;
+	padding-left: 10px;
+}
+section .txt1 .s2{
+	color:red;
+}
+/*鏂板寰俊鎵嬫満鍙�*/
+section .txt4{
+	margin-top:10px;
+	padding: 8px 15px;
+    height: 28px;
+    line-height: 28px;
+    padding-bottom: 15px;
+}
+section .txt4>div{
+	float:left;
+	margin-right:28px;
+	font-size:12px;
+}
+section .txt4>div input{
+	width:94px;
+	border-radius:4px;
+	border:solid 1px #cbcbcb;
+	outline:none;
+	background:#fff;
+	padding-left:10px;
+	height:25px;
+	line-height:25px;
+}
+section .txt4>div img{
+	margin-right:5px;
+}
+section .txt4>div .sp1{
+	color:red;
+}
+section .txt4>div .sp2{
+	color:#999;
+}
+
+
+section .txt3{
+	border-top:solid 1px #ededed;
+	line-height:34px;
+	padding:0 15px;
+	font-size:14px;
+	color:#ff5d42;
+}
+section .txt3 div:nth-child(2){
+	color:#999;
+}
+section .info2{
+	padding:10px 15px;
+	overflow:hidden;
+}
+section .info2>*{
+	float:left;
+	color:#7d7d7d;
+}
+section .info2 i{
+	font-style: normal;
+	margin:0 40px;
+}
+section .info3{
+	overflow: hidden;
+	padding-bottom:30px;
+}
+section .info3>.d1{
+	float:left;
+	margin-right:30px;
+	width:180px;
+	height:80px;
+	text-align:center;
+	border:solid 1px #d7d7d7;
+	border-radius:4px;
+	margin-top:20px;
+	margin-left:15px;
+	cursor:pointer;
+}
+section .info3>.d1.active{
+	background:#f8f4f3;
+	border:solid 1px #ff5d42;
+	color:#ff5d42;
+}
+section .info3>.d1 img,section .info3>.d1 span{
+	float:left;
+}
+section .info3>.d1 img{
+	margin-top:20px;
+	margin-left:32px;
+	margin-bottom:2px;
+}
+section .info3>.d1 span{
+	margin-left:10px;
+	margin-top:31px;
+	line-height:16px;
+}
+section .info3>.d1 p{
+	clear:both;
+	color:#999;
+	font-size:12px;
+}
+/*浼樻儬鍒�*/
+section .d3{
+	line-height:20px;
+	color:#4f4f4f;
+	padding:0 10px;
+	padding-left:15px;
+	float:right;
+	margin-top:15px;
+	clear: both;
+	width:150px;
+	text-align:center;
+}
+section .d3 span{
+	font-weight:bold;
+	color:#ff4727;
+}
+section .d2{
+	line-height:22px;
+	color:#4f4f4f;
+	padding:0 10px;
+	padding-left:15px;
+	float:right;
+	margin-top:10px;
+	margin-bottom:15px;
+	clear: both;
+}
+section .d2 p{
+	display:inline-block;
+	color:#ff4727;
+}
+section .d2 span{
+	font-size:24px;
+}
+section .txt2{
+	float:right;
+	height:50px;
+	line-height:50px;
+	color:#ff5d42;
+	margin-top:10px;
+}
+section .submit{
+	float:right;
+	line-height:44px;
+	color:#fff;
+	background:#f5501e;
+	width:150px;
+	text-align:center;
+	border-radius:6px;
+	margin-top:5px;
+	cursor:pointer;
+	margin-bottom:15px;
+	clear:both;
+}
+section .box1{
+	height:30px;
+}
+/*浼樻儬鍒�*/
+
+/*寮圭獥浣欓鏀粯*/
+#balance_payment .info{
+
+}
+#balance_payment .info .p1{
+	text-align:center;
+	font-size:18px;
+	color:#4b4b4b;
+	line-height:70px;
+}
+#balance_payment .info .pbox{
+	text-align:center;
+	display:none;
+}
+#balance_payment .info .pboxShow{
+	display:block;
+}
+#balance_payment .info .pbox input{
+	display:inline-block;
+	width:40px;
+	height:40px;
+	background:#f2f1f1;
+	border:solid 1px #d3d3d3;
+	border-radius:8px;
+	outline:none;
+	text-align:center;
+	font-size:18px;
+	font-weight:bold;
+	line-height:40px;
+	margin:0 5px;
+}
+#balance_payment .info .pbox input:focus{
+	border:solid 1px #ff5d42;
+}
+#balance_payment .info .txt{
+	margin-top:30px;
+	text-align:center;
+	color:#8a8b8a;
+	line-height:28px;
+}
+#balance_payment .info .loadBox{
+	text-align:center;
+	height:40px;
+	color:#243a4c;
+	display:none;
+}
+#balance_payment .info .loadBox img{
+	width:30px;
+}
+#balance_payment .info .loadShow{
+	display:block;
+}
+/*寰俊鏀粯*/
+#weixin_payment .info{
+	padding-bottom:40px;
+}
+#weixin_payment p{
+	text-align:center;
+	line-height:20px;
+}
+#weixin_payment .p1{
+	color:#a0a0a0;
+}
+#weixin_payment .p1 span{
+	color:#ff7432;
+	font-size:20px;
+	font-weight:bold;
+}
+#weixin_payment .p2{
+	color:#575857;
+	margin-bottom:20px;
+}
+#weixin_payment .imgBox{
+	width:160px;
+	height:160px;
+	overflow:hidden;
+	margin:0 auto;
+	display:none;
+}
+#weixin_payment .imgShow{
+	display:block;
+}
+#weixin_payment .imgBox img{
+	width:160px;
+	height:160px;
+}
+#weixin_payment .loadBox{
+	width:160px;
+	height:160px;
+	margin:0 auto;
+	text-align:center;
+	line-height:160px;
+	display:none;
+}
+#weixin_payment .loadBox img{
+	width:30px;
+}
+#weixin_payment .loadShow{
+	display:block;
+}
+/*閬囧埌8鍏冧紭鎯犲埜鎻愮ず鐢ㄦ埛蹇呴』鍦╝pp涓嬪崟*/
+#go_loadapp_code .info{
+	padding-bottom:30px;
+}
+#go_loadapp_code p{
+	text-align: center;
+	font-size: 18px;
+	line-height: 26px;
+}
+#go_loadapp_code .d1{
+	width: 170px;
+	height: 170px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+#go_loadapp_code .d1 img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#go_loadapp_code .p3{
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+/**
+ * 琚媺榛戝悗涓嬪崟鏃剁殑鎻愮ず寮圭獥
+ */
+.limit_order_tc{
+	position: fixed;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	background:rgba(0,0,0,.4);
+	z-index: 100000;
+	display: none;
+}
+.limit_order_tc .info{
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin: -100px 0 0 -200px;
+	width:400px;
+	height:200px;
+	background:url("../../img/recharge/ico_6.png");
+	overflow: hidden;
+}
+.limit_order_tc .info .txt{
+	text-align:center;
+	color:rgba(34, 34, 34, 1);
+	font-size:16px;
+	margin-top: 58px;
+}
+.limit_order_tc .info .btn_box{
+	text-align:center;
+	margin-top:40px;
+}
+.limit_order_tc .info .btn_box p{
+	width:140px;
+	height:36px;
+	line-height: 36px;
+	background:rgba(237,237,237,1);
+	border-radius:20px;
+	font-size:14px;
+	color:rgba(102,102,102,1);
+	text-align:center;
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	cursor: pointer;
+	position: relative;
+}
+.limit_order_tc .info .btn_box p:active{
+	left:1px;
+	top:1px;
+}
+.limit_order_tc .info .btn_box .p2{
+	border:1px solid rgba(254,88,107,1);
+	background: #fff;
+}

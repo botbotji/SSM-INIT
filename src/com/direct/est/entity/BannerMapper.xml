@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.direct.est.dao.BannerDao">
+
+  <resultMap type="Banner" id="bannerMap">
+		<id column="id" property="id"/>	
+		<result column="image" property="image"/>
+		<result column="imgName" property="imgName"/>
+		<result column="orderby" property="orderby"/>
+		
+		<association property="menu" javaType="Menu">
+			<id column="m_id" property="id"/>
+			<result column="m_menuName" property="menuName"/>
+		<result column="m_url" property="url"/>
+		</association>
+	</resultMap>
+	
+  <select id="findAll" parameterType="map" resultMap="bannerMap" >
+  	select b.id id,b.imgName imgName,b.image image,b.orderby orderby,m.id m_id,m.menuName m_menuName,m.url m_url from  menu m,banner b where b.menu_id = m.id
+  		
+  			<if test="imgName != null">
+  				and b.`imgName` like  #{imgName}
+  			</if>
+  			<if test="image != null">
+  				and b.`image` like  #{image}
+  			</if>
+  			<if test="menu_id != null">
+  				and b.`menu_id` = #{menu_id}
+  			</if>
+  				
+  	limit #{currNum},#{pageSize}
+  </select>
+  
+  <select id="totalCount" parameterType="map" resultType="int">
+  	select count(*) from  banner 
+  		<where>
+  			<if test="imgName != null">
+  				and `imgName` like  #{imgName}
+  			</if>
+  			<if test="image != null">
+  				and b.`image` like  #{image}
+  			</if>
+  			<if test="menu_id != null">
+  				and `menu_id` = #{menu_id}
+  			</if>
+  		</where>
+  </select>
+  
+  <select id="findById" resultMap="bannerMap">
+  	select b.id id,b.ImgName imgName,b.image image,b.orderby orderby,m.id m_id,m.menuName m_menuName,m.url m_url from  menu m,banner b where b.menu_id = m.id and b.id=#{id}	 
+  </select>
+  
+  <delete id="delById">
+  	delete from banner where id=#{id}
+  </delete>
+  
+  <insert id="add" parameterType="com.direct.est.entity.Banner">
+  	insert into banner(image,imgName,orderby,menu_id) value(#{image},#{imgName},#{orderby},#{menu.id})
+  </insert>
+  
+  <update id="update" parameterType="com.direct.est.entity.Banner">
+  	update banner 
+  		<set>
+  			<if test="image != null">
+  				image=#{image},
+  			</if>
+  			<if test="imgName != null">
+  				imgName=#{imgName},
+  			</if>
+  			<if test="orderby != null">
+  				`orderby`=#{orderby},
+  			</if>
+  			<if test="menu_id != null">
+  				menu_id=#{menu_id}
+  			</if>
+	  	</set> where id=#{id}
+  </update>
+  
+</mapper>

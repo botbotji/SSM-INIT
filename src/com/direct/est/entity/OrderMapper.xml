@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.direct.est.dao.OrderDao">
+
+	<resultMap type="order" id="orderMap">
+		<id column="id" property="id"/>	
+		<result column="hour" property="hour"/>
+		<result column="number" property="number"/>
+		<result column="money" property="money"/>
+		<result column="bascy" property="bascy"/>
+		<!-- 级联配置一对一关系
+		 property 指定哪个属性是联合的对象
+		 javaType 指定这个属性对象的类型
+		-->
+		<!-- 用户和订单一对一关系 -->
+		<!-- <association property="employee" javaType="Employee">
+			<id column="employee_id" property="id"/>
+		</association> -->
+		<!-- 员工和订单一对一关系 -->
+		<!-- <association property="user" javaType="User">
+			<id column="user_id" property="id"/> -->
+	<!-- <result column="hour" property="hour"/>
+		<result column="number" property="number"/>
+		<result column="money" property="money"/>
+		<result column="bascy" property="bascy"/> -->
+		<!-- </association> -->
+	</resultMap>
+  <select id="findAll" parameterType="map" resultMap="orderMap">
+  	<!-- 嵌套结果: 使用嵌套结果映射来处理重复的联合结果的子集 -->
+  	select * from dengdan 
+  		<where>
+  		 
+  			<if test="number != null">
+  				`number` like  #{number}
+  			</if>
+  			<if test="money != null">
+  				and o`money` like #{money}
+  			</if>
+  			<if test="user_id != null">
+  				and `user_id` = #{user_id}
+  			</if>
+  			<if test="employee_id != null">
+  				and o`employee_id` = #{employee_id}
+  			</if>
+  		</where>
+  	limit #{currNum},#{pageSize}
+  </select>
+      
+  <select id="totalCount" parameterType="map" resultType="int">
+  	select count(*) from  dengdan 
+  		<where>
+  			<if test="number != null">
+  				`number` like  #{number}
+  			</if>
+  			<if test="descy != null">
+  				and `money` like #{money}
+  			</if>
+  			<if test="user_id != null">
+  				and `user_id` = #{user_id}
+  			</if>
+  			<if test="employee_id != null">
+  				and `employee_id` = #{employee_id}
+  			</if>
+  		</where>
+  </select>
+  
+  <select id="findById" resultMap="orderMap">
+  	select * from dengdan where id=#{id}
+  </select>
+  
+  <delete id="delById">
+  	delete from order where id=#{id}
+  </delete>
+  
+  <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.direct.est.entity.Order">
+  	insert into dengdan(hour,number,money,bascy,employee_id,user_id) value(#{hour},#{number},#{money},#{bascy},#{employee_id},#{user_id})
+  </insert>
+  <!-- 更新主表从表也更行新 -->
+  <update id="update" parameterType="com.direct.est.entity.Order">
+  	update dengdan set bascy=#{bascy} where id=#{id}
+  </update>
+  
+</mapper>

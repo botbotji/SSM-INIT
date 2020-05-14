@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.direct.est.dao.AppraiseDao">
+
+	<resultMap type="Appraise" id="appraiseMap">
+		<id column="id" property="id"/>	
+		<result column="neirong" property="neirong"/>
+		<result column="dengji" property="dengji"/>
+		<!-- 级联配置一对一关系
+		 property 指定哪个属性是联合的对象
+		 javaType 指定这个属性对象的类型
+		-->
+		<association property="order" javaType="Order">
+			<id column="o_id" property="id"/>
+			<result property="hour" column="o_hour"/>
+			<result property="number" column="o_number"/>
+			<result property="money" column="o_money"/>
+			<result property="bascy" column="o_bascy"/>
+		</association>
+	</resultMap>
+	<select id="getAll"  resultType="Appraise" >
+		select * from appraise
+	</select>
+	
+  <select id="findAll" parameterType="map" resultMap="appraiseMap" >
+  	select 
+  		a.id id,a.neirong neirong,a.dengji dengji,
+  		o.id o_id,o.hour o_hour,o.number o_number,o.money o_money,o.bascy o_bascy 
+  		from appraise a,dengdan o 
+  		where a.order_id = o.id
+  			<if test="neirong != null">
+  				a.`neirong` like  #{neirong}
+  			</if>
+  			<if test="dengji != null">
+  				and  a.`dengji` like #{dengji}
+  			</if>
+  			<if test="order_id != null">
+  				and a.`order_id` = #{order_id}
+  			</if>
+  				
+  	limit #{currNum},#{pageSize}
+  </select>
+  
+  <select id="totalCount" parameterType="map" resultType="int">
+  	select count(*) from  appraise 
+  		<where>
+  			<if test="neirong != null">
+  				`neirong` like  #{neirong}
+  			</if>
+  			<if test="dengji != null">
+  				and  `dengji` like #{dengji}
+  			</if>
+  			<if test="order_id != null">
+  				and a`order_id` = #{order_id}
+  			</if>
+  		</where>
+  </select>
+  
+  <select id="findById" resultType="Appraise">
+  	select * from appraise where id=#{id} 	
+  </select>
+  
+  <delete id="delById">
+  	delete from appraise where id=#{id}
+  </delete> 
+  
+  <insert id="add" parameterType="Appraise">
+  	insert into appraise(neirong,dengji,order_id) value(#{neirong},#{dengji},#{order.id})
+  </insert>
+  
+  <update id="update" parameterType="Appraise">
+  	update appraise set neirong=#{neirong},dengji=#{dengji},order_id=#{order.id} where id=#{id}
+  </update>
+  
+</mapper>

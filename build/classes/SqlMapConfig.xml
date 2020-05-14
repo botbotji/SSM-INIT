@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<package name="com.direct.est.entity"/>
+	</typeAliases>
+	<mappers>
+	   <mapper resource="com/direct/est/entity/AdminMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/GreamTypeMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/UserMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/GreamLevelMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/EmployeeMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/OrderMapper.xml"/> 
+	  	<mapper resource="com/direct/est/entity/AppraiseMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/MenuMapper.xml"/>
+	   <mapper resource="com/direct/est/entity/BannerMapper.xml"/>
+  </mappers>
+</configuration>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.direct.est.dao.AdminDao">
+
+
+	<select id="login" resultType="com.direct.est.entity.Admin">
+		select id,username,password,descy from admin 
+		where username=#{username}
+		and password=#{password}   
+	</select>
+  <select id="findAll" parameterType="map" resultType="com.direct.est.entity.Admin">
+  	select * from  admin 
+  		<where>
+  			<if test="username != null">
+  				`username` like  #{username}
+  			</if>
+  			<if test="remarks != null">
+  				and `descy` like #{descy}
+  			</if>
+  		</where>
+  	limit #{currNum},#{pageSize}
+  </select>
+  
+  <select id="totalCount" parameterType="map" resultType="int">
+  	select count(*) from  admin 
+  		<where>
+  			<if test="username != null">
+  				`username` like  #{name}
+  			</if>
+  			<if test="descy != null">
+  				and `descy` like #{descy}
+  			</if>
+  		</where>
+  </select>
+  
+  <select id="findById" resultType="com.direct.est.entity.Admin">
+  	select * from admin where id=#{id}
+  </select>
+  
+  <delete id="delById">
+  	delete from admin where id=#{id}
+  </delete>
+  
+  <insert id="add" parameterType="com.direct.est.entity.Admin">
+  	insert into admin(username,password,descy) value(#{username},#{password},#{descy})
+  </insert>
+  
+  <update id="update" parameterType="com.direct.est.entity.Admin">
+  	update admin set username=#{username},password=#{password},descy=#{descy} where id=#{id}
+  </update>
+  
+</mapper>

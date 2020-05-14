@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.direct.est.dao.EmployeeDao">
+
+  <select id="getAll" parameterType="map" resultType="com.direct.est.entity.Employee">
+  	 
+  	 select * from  employee
+  </select>
+  <select id="findAll" parameterType="map" resultType="Employee">
+  	select * from  employee
+  		<where>
+  			<if test="nickname != null">
+  				`nickname` like  #{nickname}
+  			</if>
+  			<if test="name != null">
+  				and `name` like #{name}
+  			</if>
+  		</where>
+  	limit #{currNum},#{pageSize}
+  </select>
+  
+  <select id="totalCount" parameterType="map" resultType="int">
+  	select count(*) from employee
+  		<where>
+  			<if test="nickname != null">
+  				`nickname` like  #{nickname}
+  			</if>
+  			<if test="name != null">
+  				and `name` like #{name}
+  			</if>
+  		</where>
+  </select>
+  
+  <select id="findById" resultType="Employee">
+  	select * from employee where id=#{id}
+  </select>
+  
+  <delete id="delById">
+  	delete from employee where id=#{id}
+  </delete>
+  
+  <insert id="add" parameterType="Employee">
+  	insert into employee(name,nickname,phone,password,sex,age,state,price,headImg,home,serveup,descy) value(#{name},#{nickname},#{phone},#{password},#{sex},#{age},#{state},#{price},#{headImg},#{home},#{serveup},#{descy})
+  </insert>
+   
+  <update id="update" parameterType="Employee">
+  	update employee set name=#{name},nickname=#{nickname},phone=#{phone},password=#{password},sex=#{sex},age=#{age},state=#{state},state=#{state},headImg=#{headImg},home=#{home},serveup=#{serveup},descy=#{descy} where id=#{id}
+  </update>
+  
+</mapper>

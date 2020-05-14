@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.direct.est.dao.GreamlevelDao">
+	
+	
+	<resultMap type="com.direct.est.entity.Greamlevel" id="greamLevelMap">
+		<id column="id" property="id"/>	
+		<result column="name" property="levelname"/>
+		<result column="descy" property="descy"/>
+<!-- 级联配置一对一关系
+ property 指定哪个属性是联合的对象
+ javaType 指定这个属性对象的类型
+
+-->
+		<association property="greamtype" javaType="Greamtype">
+			<id column="gt_id" property="id"/>
+			<result property="greamName" column="gt_greamName"/>
+			<result property="descy" column="gt_descy"/>
+		</association>
+	</resultMap>
+	
+	 <select id="getAll" parameterType="map" resultType="Greamlevel">
+  	 
+  	 select * from greamlevel 
+  </select>
+  <select id="findAll" parameterType="map" resultMap="greamLevelMap" >
+  	select gl.id id,gl.levelname name,gl.descy descy,gt.id gt_id,gt.greamName gt_greamName,gt.descy gt_descy from  greamlevel gl,greamtype gt where gl.greamType_id = gt.id
+  		
+  			<if test="levelname != null">
+  				and gl.`levelname` like  #{levelname}
+  			</if>
+  			<if test="descy != null">
+  				and gl.`descy` like #{descy}
+  			</if>
+  			<if test="greamType_id != null">
+  				and gl.`greamType_id` = #{greamType_id}
+  			</if>
+  				
+  	limit #{currNum},#{pageSize}
+  </select>
+  
+  <select id="totalCount" parameterType="map" resultType="int">
+  	select count(*) from  greamlevel 
+  		<where>
+  			<if test="levelname != null">
+  				`levelname` like  #{levelname}
+  			</if>
+  			<if test="remarks != null">
+  				and `descy` like #{descy}
+  			</if>
+  			<if test="greamType_id != null">
+  				and `greamType_id` = #{greamType_id}
+  			</if>
+  		</where>
+  </select>
+  
+  <select id="findById" resultMap="greamLevelMap">
+  	select 
+  	gl.id id,gl.levelname name,gl.descy descy,
+  	gt.id gt_id,gt.greamName gt_greamName,gt.descy gt_descy from  greamlevel gl,greamtype gt 
+  	where gl.greamType_id = gt.id and gl.id=#{id}
+  </select>
+  
+  <delete id="delById">
+  	delete from greamlevel where id=#{id}
+  </delete>
+  
+  <insert id="add" parameterType="Greamlevel">
+  	insert into greamlevel(levelname,descy,greamType_id) value(#{levelname},#{descy},#{greamtype.id})
+  </insert>
+  
+  <update id="update" parameterType="Greamlevel">
+  	update greamlevel set levelname=#{levelname},descy=#{descy},greamType_id=#{gametype.id} where id=#{id}
+  </update>
+  
+</mapper>

@@ -1,0 +1,66 @@
+.aristocratic_gifts {
+  position: fixed;
+  width: 1200px;
+  height: 800px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1002;
+  opacity: 1;
+  pointer-events: none;
+}
+.aristocratic_gifts .po_img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 88;
+}
+.aristocratic_gifts .po_img.ylmbg {
+  opacity: 0;
+}
+.aristocratic_gifts .po_img img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.aristocratic_gifts .success_bg {
+  position: absolute;
+  left: 0px;
+  top: -50px;
+  width: 1200px;
+  height: 1000px;
+}
+.aristocratic_gifts .information {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  font-size: 43px;
+  color: #ee0ae6;
+  font-weight: bold;
+  font-style: italic;
+  z-index: 1;
+}
+.aristocratic_gifts .information .s1 {
+  color: #e42815;
+}
+.aristocratic_gifts .information .s2 {
+  color: #ee0a0a;
+}
+.aristocratic_gifts .information .s3,
+.aristocratic_gifts .information .s4 {
+  font-size: 50px;
+  color: #0aa6ee;
+}
+.aristocratic_gifts .love {
+  display: block;
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  left: 300px;
+  top: 100px;
+}

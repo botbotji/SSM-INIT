@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	 <!-- 数据源连接池配置 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driver}"></property>
+		<property name="url" value="${db.url}"></property>
+		<property name="username" value="${db.username}"></property>
+		<property name="password" value="${db.password}"></property>
+	</bean>
+	 
+	 <!-- 配置SqlSessionFactoryBean  -->
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="dataSource" ref="dataSource"></property>
+	 	<property name="configLocation"  value="classpath:SqlMapConfig.xml"></property>
+	 </bean>
+	  
+	  <!-- 扫描dao层，为dao创建代理对象  -->
+	 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
+	 		<property name="basePackage"  value="com.direct.est.dao"></property>
+	 </bean>
+	 
+	 <!-- 扫描service包下的所有service注解，加入到ioc容器中  -->
+	 <context:component-scan base-package="com.direct.est.service"></context:component-scan>
+	
+	 
+	 <!-- 事物管理器  -->
+	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	 		<property name="dataSource" ref="dataSource"></property>
+	 </bean>
+	 
+	 <!-- 事物增强配置  -->
+	 <tx:advice id="txAdvice" transaction-manager="transactionManager">
+	 	<tx:attributes>
+	 		<!-- 不需要事物的方法  当前有事物就添加到当前事物执行，如果没有就不创建事物 -->
+	 		<tx:method name="select*" read-only="true" propagation="SUPPORTS"/>
+	 		<tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+	 		<tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+	 		
+	 		<!-- 需要事物的方法  当前有事物就添加到当前事物执行，如果没有就创建事物 -->
+	 		<tx:method name="*" read-only="false" propagation="REQUIRED"/>
+	 	</tx:attributes>
+	 </tx:advice>
+	 <!-- 事物切入配置 -->
+	 <aop:config>
+	 	<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.direct.est.service.impl.*.*(..))"/>
+	 </aop:config>
+	 
+	 
+</beans>      

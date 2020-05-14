@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+.layui-form-label{
+	width:50px;
+	text-align:left;
+	padding:9px;
+}
+#gtype-edit-content{
+	display:none;
+}
+#gtype-add-content{
+	display:none;
+}
+.layui-input-block{
+	max-width:300px;
+}
